@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const user = require("../models/user");
 const User = require("../models/user");
 
 const validateJWT = async (req, res, next) => {
@@ -21,7 +20,7 @@ const validateJWT = async (req, res, next) => {
         .json({ msg: "Token no válido - user not exist" });
     }
     //Verificar que el user tenga estado true
-    if (!user.state) {
+    if (!user.status) {
       return res
         .status(401)
         .json({ msg: "Token no válido - user state false" });
